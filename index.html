@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="">
+            <meta name="author" content="">
+
+            <title>Mana Curve Calculator</title>
+
+            <!-- Bootstrap core CSS -->
+            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+            <!-- Custom styles for this template -->
+            <link href="css/styles.css" rel="stylesheet">
+
+    </head>
+
+    <body id="page-top" class="body body_p">
+        <header class="header">
+            <div class="container-fluid text-center">
+                <h1>your daily Magic</h1>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container-fluid">
+              <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+              <a class="nav-link js-scroll-trigger" href="#intro">About us</a>
+              <a class="nav-link js-scroll-trigger" href="#manacalc">Mana Calculator</a>
+              <a class="nav-link js-scroll-trigger" href="#dailycard">Daily Card</a>
+
+            </div>
+          </nav>
+
+
+
+        <section id="intro" class="container-fluid">
+            <div class="container-fluid row">
+
+                    <article id="articleinit" class="col-xs-12 col-sm-8 col-md-8 col-lg-9 text-center">
+                            El clérigo Sadage se dirigía hacia las puertas de la abovedada sala de culto, en el corazón de la Fortaleza de la Cábala. El humo de las antorchas y el incienso formaba una nube sobre los sectarios postrados en el suelo de piedra. Los súbditos suplicaban permiso para entrar y rogaban el favor del Vástago de la Oscuridad, quien moraba en el interior.
+
+                            Un grupo de discípulos vestidos con hábitos oscuros se aproximó desde el otro extremo, abriéndose camino entre los suplicantes para ir al encuentro de Sadage. El clérigo reconoció a la líder del grupo: Aguja, una agente que había recibido la misión de infiltrarse en Nueva Argivia. Cuando se acercaron a él, todo el grupo se arrodilló.
+                    </article>
+                    <aside class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                        <img id="big_pic" src="images/eldrazi.png" width="400" height="500"/>
+                    </aside>
+
+            </div>
+            <div class="container-fluid row">
+                <button type="button" class="btn btn-primary" width="100" height="2000" onclick="changeFont()">Change Font</button>
+                <button type="button" class="btn btn-primary" width="100" height="2000" onclick="changeBackColor()">Change Background Color</button>
+                <button type="button" class="btn btn-primary" width="100" height="2000" onclick="changeColor()">Change Font Color</button>
+                <button type="button" class="btn btn-primary" width="100" height="2000" onclick="makeBold()">Make Bold</button>
+                <button type="button" class="btn btn-primary" width="100" height="2000" onclick="pictureChange()">Change Picture</button>
+            </div>
+
+
+        </section>
+        <section id="manacalc" class="container-fluid">
+            <h1>To calculate your mana amount enter the next fields</h1>
+            <div class="container-fluid row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 text-center">
+                    Blue Mana: <br><input class="input" type="number" id="bluemana">
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 text-center">
+                    Red Mana: <br><input type="number" id="redmana">
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 text-center">
+                    Green Mana: <br><input type="number" id="greenmana">
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 text-center">
+                    Black Mana: <br><input type="number" id="blackmana">
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 text-center">
+                    White Mana: <br><input type="number" id="whitemana">
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2 text-center">
+                    Number of Lands: <br><input type="number" id="lands">
+                </div>
+            </div>
+            <div class="container-fluid row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <button onclick="insertDeck(calculateManaCurve())" type="button" class="btn btn-primary" width="100" height="2000">Calculate Mana</button>
+                    </div>
+            </div>
+            <div class="container-fluid row">
+              <table class="table-bordered" style="width:100%" id="decktable">
+               <tr>
+                 <th>Blue Mana</th>
+                 <th>Red Mana</th>
+                 <th>Green Mana</th>
+                 <th>Black Mana</th>
+                 <th>White Mana</th>
+                 <th>Total Lands</th>
+               </tr>
+              </table>
+            </div>
+            <div class="container-fluid row">
+                <div>
+                  Delete Row Number:<input type="number" id="rownumber">
+                  <button onclick="deleteSelectedDeck()" type="button" class="btn btn-primary" width="100" height="2000">Delete Deck</button>
+                </div>
+            </div>
+            <div class="container-fluid row">
+                <div>
+                  Update Row Number:<input type="number" id="rownumber_update">
+                  <button onclick="updateDeck(getDeckValues())" type="button" class="btn btn-primary" width="100" height="2000">Update!</button>
+                  <button onclick="saveChanges()" type="button" class="btn btn-primary" width="100" height="2000">Save Changes</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="dailycard" class="container-fluid img-responsive">
+            <h1>The daily card to see is:</h1>
+                <img src="images/green.jpg" width="500" height="800"/>
+        </section>
+
+
+    </body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/insert.js"></script>
+    <script src="scripts/delete.js"></script>
+    <script src="scripts/update.js"></script>
+
+</html>
